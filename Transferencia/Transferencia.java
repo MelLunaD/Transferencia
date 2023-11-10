@@ -47,7 +47,7 @@ public class Transferencia {
 
             //Esto es el llamado a la función que ya actualiza mi saldo
             System.out.println("Su saldo actual es: $" +Menu.actualizarSaldo(montoPagar));
-        }else {
+        }else{
             System.out.println("Saldo insuficiente.");
         }
     }
