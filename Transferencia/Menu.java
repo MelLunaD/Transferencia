@@ -1,6 +1,6 @@
 public class Menu {
 
-    // Datos del usuario (Hacer otro AList para acomodar los datos)
+    // Datos del usuario (Hacer otro AList para acomodar los datos) y Agregar un limpiar Pantalla
     public final static String nombre = "Jemina";
     public final static String apellido = "Rodriguez";
     public final static String dni = "1234567890";
@@ -16,6 +16,7 @@ public class Menu {
 
     public static void menuOSalir()
     {
+        Teclado.saltarLinea();
         System.out.println("¿Deseas volver al menú principal (1) o salir del homebanking (2)?");
         int res = Teclado.obtenerInt();
 
@@ -51,7 +52,8 @@ public class Menu {
     
     public static void menuPrincipal()
     {
-        System.out.println("----Menú principal----");
+        Teclado.limpiarPantalla();
+        System.out.println("---- Menú principal ----");
         System.out.println("1. Datos del usuario");
         System.out.println("2. Saldo");
         System.out.println("3. Transferencia");
@@ -79,7 +81,9 @@ public class Menu {
                 PagoOnline.Servicios(saldo);
                 menuOSalir();
                 break;
-            case 5: // Salir
+            case 5: //Salir
+                Teclado.cerrarTeclado();
+                System.exit(0);
                 return;
             default:
                 System.out.println("Opción no válida. Inténtalo de nuevo.");

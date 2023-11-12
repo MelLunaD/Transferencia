@@ -7,7 +7,10 @@ public class PagoOnline {
     public final static double internet = 12000;
 
     public static void Servicios(double valorSaldo){
-    
+
+        Teclado.limpiarPantalla();
+        System.out.println("---- Pago de Servicios ----");
+        Teclado.saltarLinea();
         System.out.println("¿Qué servicio desea pagar?");
 
         // Opciones:
@@ -40,8 +43,8 @@ public class PagoOnline {
 
         if ( montoAPagar > 0 && valorSaldo >= montoAPagar )
         {
-            System.out.println("Procesando pago");
-            Menu.descontarSaldo(montoAPagar);
+            System.out.println("Procesando pago..."); //Podemos agregar un sout de "transición"
+            Teclado.saltarLinea();
             System.out.println("Su saldo anterior es:       $" + valorSaldo);
             System.out.println("El monto transferido es:    $" + montoAPagar);
             System.out.println("Su saldo actual es:         $" + Menu.descontarSaldo(montoAPagar));

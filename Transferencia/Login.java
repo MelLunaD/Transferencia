@@ -6,11 +6,13 @@ public class Login {
     
 
     public static void iniciarSesion() {
-        
+
         Teclado.limpiarPantalla();
+        System.out.println("---- Bienvenido ----");
+        Teclado.saltarLinea();
         System.out.println("Ingrese su nombre de usuario:");
         String usuarioIngresado = Teclado.obtenerString();
-
+        Teclado.saltarLinea();
         System.out.println("Ingrese su contraseña:");
         String contrasenaIngresada = Teclado.obtenerString(); 
 

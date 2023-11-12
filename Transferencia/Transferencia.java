@@ -3,9 +3,11 @@ public class Transferencia {
     {
         int resp = 0;
 
+        Teclado.limpiarPantalla();
         System.out.println("----- TRANSFERENCIA -----");
         System.out.println("1. CBU");
         System.out.println("2. Alias");
+        Teclado.saltarLinea();
         System.out.print("Elija una opción: ");
 
         resp = Teclado.obtenerInt();
