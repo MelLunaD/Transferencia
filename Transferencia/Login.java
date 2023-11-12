@@ -1,45 +1,27 @@
-import java.util.Scanner;
-
 public class Login {
-    private static boolean estaLogueado = false;
-    private static String usuario = "juancasla777";
-    private static String contrasena = "jojox2456";
 
-    public static void main(String[] args) {
-        Scanner teclado = new Scanner(System.in);
+    //Se puede hacer un AList con varios usuarios y contraseñas
+    private static String usuario = "User1";
+    private static String contrasena = "1234";
+    
 
-        // se llama a la funcion de inicio de cesion    
-        realizarLogin(teclado);
+    public static void iniciarSesion() {
+        
+        Teclado.limpiarPantalla();
+        System.out.println("Ingrese su nombre de usuario:");
+        String usuarioIngresado = Teclado.obtenerString();
 
-        // despues del incio se puede raealizar otras funciones dentro del loggin
-        if (estaLogueado) {
-            
-            System.out.println("¡Bienvenido al sistema de HomeBanking de la comision 23596!");
+        System.out.println("Ingrese su contraseña:");
+        String contrasenaIngresada = Teclado.obtenerString(); 
+
+        if (usuarioIngresado.equals(usuario) && contrasenaIngresada.equals(contrasena)) {
+            System.out.println("Inicio de sesión exitoso");
+        } else {
+            System.out.println("Las credenciales son incorrectas, por favor vuelva a ingresarlas");
+            iniciarSesion();
         }
+    
     }
 
-    private static void realizarLogin(Scanner teclado) {
-        boolean datosCorrectos = false;
-
-        do {
-            System.out.println("Ingrese su nombre de usuario:");
-            String usuarioIngresado = teclado.nextLine();
-
-            System.out.println("Ingrese su contraseña:");
-            String contrasenaIngresada = teclado.nextLine();
-
-            datosCorrectos = validarCredenciales(usuarioIngresado, contrasenaIngresada);
-
-            if (datosCorrectos) {
-                estaLogueado = true;
-                System.out.println("Inicio de sesión exitoso");
-            } else {
-                System.out.println("Las credenciales son incorrectas, por favor vuelva a ingresarlas");
-            }
-        } while (!datosCorrectos);
-    }
-
-    private static boolean validarCredenciales(String usuarioIngresado, String contrasenaIngresada) {
-        return usuarioIngresado.equals(usuario) && contrasenaIngresada.equals(contrasena);
-    }
 }
+  

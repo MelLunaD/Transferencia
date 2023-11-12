@@ -1,5 +1,6 @@
 public class Transferencia {
-    public static void transferirMenu(double valorSaldo) {
+    public static void transferirMenu(double valorSaldo) 
+    {
         int resp = 0;
 
         System.out.println("----- TRANSFERENCIA -----");
@@ -25,7 +26,8 @@ public class Transferencia {
         }
     }
 
-    public static void transferir(double valorSaldo) {
+    public static void transferir(double valorSaldo) 
+    {
         double montoPagar;
 
         transferirMenu(valorSaldo);
@@ -42,12 +44,12 @@ public class Transferencia {
             //Esto es el llamado a la función que ya actualiza mi saldo
             System.out.println("Su saldo anterior es:       $" + valorSaldo);
             System.out.println("El monto transferido es:    $" + montoPagar);
-            System.out.println("Su saldo actual es:         $" + MenuProvisorio.descontarSaldo(montoPagar));
+            System.out.println("Su saldo actual es:         $" + Menu.descontarSaldo(montoPagar));
         } else {
             System.out.println("Monto no válido o saldo insuficiente.");
+            transferir(valorSaldo);
         }
 
-        // Falta agregar CERRAR SESIÓN ó VOLVER AL MENÚ
-        // Esto depende de cómo se hizo el Menú Principal
+        Menu.menuOCerrarSesion();
     }
 }
