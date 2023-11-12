@@ -1,55 +1,53 @@
-import java.util.*;
-
 public class Transferencia {
-    //Funcion bucle
-    //Modularizar
+    public static void transferirMenu(double valorSaldo) {
+        int resp = 0;
+
+        System.out.println("----- TRANSFERENCIA -----");
+        System.out.println("1. CBU");
+        System.out.println("2. Alias");
+        System.out.print("Elija una opción: ");
+
+        resp = Teclado.obtenerInt();
+
+        Teclado.limpiarPantalla();
+        if (resp == 1) {
+            System.out.println("Usted ha elegido transferir por CBU, por favor ingrese los números: ");
+            System.out.print("CBU: ");
+            Teclado.obtenerString();
+        } else if (resp == 2) {
+            System.out.println("Usted ha elegido transferir por alias, por favor ingrese los caracteres: ");
+            System.out.print("ALIAS: ");
+            Teclado.obtenerString();
+        } else {
+            System.out.println("Opción incorrecta, inténtelo nuevamente.");
+            Teclado.saltarLinea();
+            transferirMenu(valorSaldo);
+        }
+    }
+
     public static void transferir(double valorSaldo) {
-
         double montoPagar;
-        int cbu, resp = 0;
-        String alias;
-        boolean NoIngres = true;
 
-        Scanner teclado = new Scanner(System.in);
+        transferirMenu(valorSaldo);
+        
+        Teclado.limpiarPantalla();
+        System.out.println("Su saldo es: $"+valorSaldo);
+        System.out.print("Indique el monto que quiera transferir: ");
+        montoPagar = Teclado.obtenerDouble();
 
-        do { 
-            System.out.println("Su saldo es: $"+valorSaldo);
-            System.out.println("Elija una opción:");
-            System.out.println("1. CBU");
-            System.out.println("2. Alias");
-
-            resp = teclado.nextInt();
-            teclado.nextLine();
-
-            if (resp == 1) {
-                System.out.println("Usted ha elegido CBU, por favor ingrese los números: ");
-                cbu = teclado.nextInt();
-                teclado.nextLine();
-                NoIngres = false;
-
-            } else if (resp == 2) {
-                System.out.println("Usted ha elegido alias, por favor ingrese los caracteres: ");
-                alias = teclado.nextLine();
-                NoIngres = false;
-
-            }else{
-                System.out.println("Opción incorrecta, inténtelo nuevamente.");
-            }
-            
-        } while (NoIngres);
-
-         
-        System.out.println("Indique el monto que quiera transferir: ");
-        montoPagar = teclado.nextDouble();
-
-        if (montoPagar <= valorSaldo) {
+        Teclado.limpiarPantalla();
+        if (montoPagar> 0 && montoPagar <= valorSaldo) {
             System.out.println("Transferencia exitosa.");
 
             //Esto es el llamado a la función que ya actualiza mi saldo
-            System.out.println("Su saldo actual es: $" +Menu.actualizarSaldo(montoPagar));
-        }else{
-            System.out.println("Saldo insuficiente.");
+            System.out.println("Su saldo anterior es:       $" + valorSaldo);
+            System.out.println("El monto transferido es:    $" + montoPagar);
+            System.out.println("Su saldo actual es:         $" + MenuProvisorio.descontarSaldo(montoPagar));
+        } else {
+            System.out.println("Monto no válido o saldo insuficiente.");
         }
+
+        // Falta agregar CERRAR SESIÓN ó VOLVER AL MENÚ
+        // Esto depende de cómo se hizo el Menú Principal
     }
-    
 }
