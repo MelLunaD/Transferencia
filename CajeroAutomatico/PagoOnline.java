@@ -53,6 +53,7 @@ public class PagoOnline {
         }
 
         // Pregunta al usuario si desea realizar otro pago
+        Teclado.saltarLinea();
         System.out.println("¿Desea realizar otro pago? (1: Sí / 2: No)");
         if (Teclado.obtenerInt()== 1) 
             // Si la respuesta es 1, realizamos otro pago

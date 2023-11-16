@@ -33,7 +33,7 @@ public class Teclado {
         System.out.println();
     }
 
-    public static void cerrarTeclado()
+    public static void cerrarTeclado() 
     {
         teclado.close();
     }
